@@ -96,6 +96,7 @@
 				TargetAttributes = {
 					8EF6B69E1DCA2B4A004036AD = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = XT296WPWHJ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -260,7 +261,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XT296WPWHJ;
 				INFOPLIST_FILE = "ImagePicker-Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vanlooproducts.ImagePicker-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -272,7 +275,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XT296WPWHJ;
 				INFOPLIST_FILE = "ImagePicker-Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vanlooproducts.ImagePicker-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
