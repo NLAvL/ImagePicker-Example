@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import ImagePickerSheetController
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,40 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pickPhotoTapped(_ sender: UITapGestureRecognizer) {
+        let presentImagePickerController: (UIImagePickerControllerSourceType) -> () = { source in
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            var sourceType = source
+            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                sourceType = .photoLibrary
+                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+            }
+            controller.sourceType = sourceType
+            
+            self.present(controller, animated: true, completion: nil)
+        }
         
+        let controller = ImagePickerSheetController(mediaType: .image)
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo", comment: "Action Title"), secondaryTitle: NSLocalizedString("Add comment", comment: "Action Title"), handler: { _ in
+            presentImagePickerController(.camera)
+        }, secondaryHandler: { _, numberOfPhotos in
+            print("Comment \(numberOfPhotos) photos")
+        }))
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title") as NSString, $0) as String}, handler: { _ in
+            presentImagePickerController(.photoLibrary)
+        }, secondaryHandler: { _, numberOfPhotos in
+            //print("Send \(controller.selectedImageAssets)")
+            print("iets doet het")
+        }))
+        controller.addAction(ImagePickerAction(cancelTitle: NSLocalizedString("Cancel", comment: "Action Title")))
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            controller.modalPresentationStyle = .popover
+            controller.popoverPresentationController?.sourceView = view
+            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+        }
+        
+        present(controller, animated: true, completion: nil)
         
     }
 
