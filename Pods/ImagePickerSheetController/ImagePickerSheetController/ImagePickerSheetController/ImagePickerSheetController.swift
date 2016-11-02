@@ -86,6 +86,7 @@ open class ImagePickerSheetController: UIViewController {
         return sheetController.actions
     }
     
+//MARK:- Arthur MAX
     /// Maximum selection of images.
     open var maximumSelection: Int?
     
