@@ -11,6 +11,11 @@ import Photos
 import ImagePickerSheetController
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
+    
+    @IBOutlet weak var testImageView: UIImageView!
+    
+    var testImage : UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +42,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         let controller = ImagePickerSheetController(mediaType: .image)
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo", comment: "Action Title"), secondaryTitle: NSLocalizedString("Add comment", comment: "Action Title"), handler: { _ in
+        
+        //FIRST ACTION
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo", comment: "Action Title"), secondaryTitle: NSLocalizedString("Add Review", comment: "Action Title"), handler: { _ in
+            
+            // TAKE A PHOTO
             presentImagePickerController(.camera)
+            
         }, secondaryHandler: { _, numberOfPhotos in
+            
+            // ADD REVIEW (with selected image(s)
             print("Comment \(numberOfPhotos) photos")
+            print("Segue to WRITE review controller with the selected image")
+            
         }))
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title") as NSString, $0) as String}, handler: { _ in
+        
+        //SECOND ACTION
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("Use This Photo", comment: "Action Title") as NSString, $0) as String}, handler: { _ in
+            
+            //PHOTO LIBRARY
             presentImagePickerController(.photoLibrary)
+            
         }, secondaryHandler: { _, numberOfPhotos in
-            //print("Send \(controller.selectedImageAssets)")
-            print("iets doet het")
+            
+            //USE THIS PHOTO
+            print("Add the selected photo to the album")
+            print("\(controller.selectedAssets)")
+           
+
+            
+            
         }))
+        
+        //THIRD / SEPERATE ACTION
         controller.addAction(ImagePickerAction(cancelTitle: NSLocalizedString("Cancel", comment: "Action Title")))
         
         if UIDevice.current.userInterfaceIdiom == .pad {

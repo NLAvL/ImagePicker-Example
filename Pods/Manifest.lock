@@ -2,21 +2,11 @@ PODS:
   - ImagePickerSheetController (0.9.3)
 
 DEPENDENCIES:
-  - ImagePickerSheetController (from `https://github.com/lbrndnr/ImagePickerSheetController`, branch `swift3`)
-
-EXTERNAL SOURCES:
-  ImagePickerSheetController:
-    :branch: swift3
-    :git: https://github.com/lbrndnr/ImagePickerSheetController
-
-CHECKOUT OPTIONS:
-  ImagePickerSheetController:
-    :commit: e9b6c2ca937135335e9b5252a7792c94ce1497d4
-    :git: https://github.com/lbrndnr/ImagePickerSheetController
+  - ImagePickerSheetController (~> 0.9.1)
 
 SPEC CHECKSUMS:
   ImagePickerSheetController: 4789b06940e299431455c61be77fda440883c36c
 
-PODFILE CHECKSUM: 379f34e0a55114c2c74eebab40d6a2980906dc83
+PODFILE CHECKSUM: 12dcc47b0080a9186c0339638e06b60e26dbc22d
 
 COCOAPODS: 1.1.0.rc.3

@@ -4,8 +4,12 @@ target 'ImagePicker-Example' do
   
   use_frameworks!
 
-pod 'ImagePickerSheetController', :git => 'https://github.com/lbrndnr/ImagePickerSheetController', :branch => 'swift3'
+pod 'ImagePickerSheetController', "~> 0.9.1"
+
 
 end
 
 # '~> 0.9'
+
+
+#,  :git => 'https://github.com/lbrndnr/ImagePickerSheetController', :branch => 'swift3'
