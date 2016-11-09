@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,20 +21,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-SE-7fH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-SE-7fH">
                                 <rect key="frame" x="27" y="43" width="72" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="27I-IJ-Hhc"/>
+                                    <constraint firstAttribute="width" constant="72" id="ywa-05-MqL"/>
+                                </constraints>
                                 <state key="normal" title="Add Photo"/>
                                 <connections>
                                     <action selector="pickPhotoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9fi-fU-mLm"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yC5-eL-ehu">
-                                <rect key="frame" x="67" y="81" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yC5-eL-ehu">
+                                <rect key="frame" x="67" y="97" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="QrX-at-6TH"/>
+                                    <constraint firstAttribute="height" constant="128" id="YMs-23-qbt"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yC5-eL-ehu" firstAttribute="top" secondItem="3mw-SE-7fH" secondAttribute="bottom" constant="24" id="6oD-oy-wZt"/>
+                            <constraint firstItem="3mw-SE-7fH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="XmZ-L2-FbK"/>
+                            <constraint firstItem="yC5-eL-ehu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ctB-OI-keo"/>
+                            <constraint firstItem="3mw-SE-7fH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="dlb-dV-XBW"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="testImageView" destination="yC5-eL-ehu" id="uJj-xp-8iM"/>

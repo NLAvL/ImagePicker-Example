@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,9 +69,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             //USE THIS PHOTO
             print("Add the selected photo to the album")
             print("\(controller.selectedAssets)")
-           
+            //testImage.images = controller.selectedAssets[0]
+            //testImage = controller.selectedAssets[0]
 
-            
+            self.convertPickedImage(asset: controller.selectedAssets[0])
             
         }))
         
@@ -86,6 +88,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(controller, animated: true, completion: nil)
         
     }
+    
+    
+    
+    func convertPickedImage(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        //var pickedImage = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 500, height: 500), contentMode: .aspectFill, options: option, resultHandler: {(result, info)->Void in
+            //pickedImage = result!
+            self.testImage = result!
+            self.testImageView.image = self.testImage
+        })
+        //return pickedImage
+        return testImage
+    }
+    
+    
 
 }
 
